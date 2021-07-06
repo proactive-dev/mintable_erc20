@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: ./src/schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MintableERC20
+    network: mainnet
+    source:
+      address: "{{localhost_MintableERC20Address}}"
+      abi: MintableERC20
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Token
+        - Transfer
+        - Account
+        - AccountBalance
+      abis:
+        - name: MintableERC20
+          file: ./abis/localhost_MintableERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts

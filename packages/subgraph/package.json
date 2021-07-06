@@ -1,0 +1,18 @@
+{
+  "name": "@mintable-erc20/subgraph",
+  "license": "UNLICENSED",
+  "version": "1.0.0",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "auth": "graph auth https://api.thegraph.com/ 0d43e1279e2d4ebcade1838521a0cc82",
+    "deploy": "graph deploy proactive-dev/mintable_erc20 --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.18.0",
+    "@graphprotocol/graph-ts": "0.18.0"
+  },
+  "devDependencies": {
+    "mustache": "^3.1.0"
+  }
+}

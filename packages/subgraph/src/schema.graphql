@@ -1,0 +1,35 @@
+type Token @entity {
+  id: ID!
+  decimals: Int
+  name: String
+  symbol: String
+}
+
+type Transfer @entity {
+  id: ID!
+  token: Token!
+  amount: BigDecimal!
+  sender: Bytes!
+  source: Bytes!
+  destination: Bytes!
+
+  block: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type Account @entity {
+  id: ID!
+  address: Bytes!
+  balances: [AccountBalance!]! @derivedFrom(field: "account")
+}
+
+type AccountBalance @entity {
+  id: ID!
+  account: Account!
+  token: Token!
+  amount: BigDecimal!
+  block: BigInt
+  modified: BigInt
+  transaction: Bytes
+}
